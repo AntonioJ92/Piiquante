@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const userCtrl = require('../controllers/user');
+const express = require('express'); // Importation du package express
+const router = express.Router(); // Méthode Router d'express permet de créer les routes ci-dessous
+const userCtrl = require('../controllers/user'); // Importation des fonctions liées à l'authentification utilisateur
 
-router.post('/signup', userCtrl.signup);
-router.post('/login', userCtrl.login);
+// Methode POST permet de stocker une nouvelle donnée
+router.post('/signup', userCtrl.signup); // Route d'acces à la fonction "signup" permettant de créer un compte utilisateur
+router.post('/login', userCtrl.login); // Route d'acces à la fonction "login" permettant de se connecter a son compte utilisateur
 
-module.exports = router;
+module.exports = router; // Methode exports permet d'exporter les differentes routes créees ci-dessus

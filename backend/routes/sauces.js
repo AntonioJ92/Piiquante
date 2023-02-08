@@ -1,26 +1,26 @@
-const express = require('express');
-const auth = require('../middleware/auth');
-const multer = require('../middleware/multer-config');
-const router = express.Router();
+const express = require('express'); // Importation du package express
+const auth = require('../middleware/auth'); // Importation de notre fonction d'authentification
+const multer = require('../middleware/multer-config'); // Importation du middleware multer du fichier multer-config.js
+const router = express.Router(); // Methode Router d'express permet de créer les routes ci-dessous
 
-const stuffCtrl = require('../controllers/sauces');
+const stuffCtrl = require('../controllers/sauces'); // Importation des fonctions liées aux sauces
 
-// Route POST pour enregistrer chaque Sauce renseignée dans la base de données
-router.post('/', auth, multer, stuffCtrl.creationSauce);
+// Methode POST permet de stocker une nouvelle donnée
+router.post('/', auth, multer, stuffCtrl.creationSauce); // Route d'acces à la fonction "creationSauce" permettant de créer une sauce dans une base de donnée
   
-// Route PUT pour valider les modifications apportées a la Sauce sur laquelle on aura cliqué
-router.put('/:id', auth, multer, stuffCtrl.modificationSauce);
+// Methode PUT permet de modifier une/des donnée(s)
+router.put('/:id', auth, multer, stuffCtrl.modificationSauce); // Route d'acces à la fonction "modificationSauce" permettant de modifier une sauce de la base de donnée
   
-// Route DELETE permettant de supprimer un objet de la base de données
-router.delete('/:id', auth, stuffCtrl.suppressionSauce);
+// Methode DELETE permettant de supprimer une/des donnée(s)
+router.delete('/:id', auth, stuffCtrl.suppressionSauce); // Route d'acces à la fonction "suppressionSauce" permettant de supprimer une sauce de la base de donnée
   
-// Route GET permettant de récuperer une Sauce bien spécifique
-router.get('/:id', auth, stuffCtrl.jaiChoisiCetteSauce); // Requete parmis les Thing de l'hôte via son id
+// Methode GET permettant de recuperer une/des donnée(s)
+router.get('/:id', auth, stuffCtrl.jaiChoisiCetteSauce); // Route d'acces à la fonction "jaiChoisiCetteSauce" permettant d'obtenir les details d'une sauce de la base de donnée
     
-// Route GET permettant de récuperer la liste complète des Sauce créees
-router.get('/', auth, stuffCtrl.montreMoiLesSauces);
+// Methode GET permettant de recuperer une/des donnée(s)
+router.get('/', auth, stuffCtrl.montreMoiLesSauces); // Route d'acces à la fonction "montreMoiLesSauces" permettant d'acceder à toutes les sauces de la base de donnée
 
-// Route POST permettant d'enregistrer les like/dislike selon l'id de l'utilisateur
-router.post('/:id/like', auth, stuffCtrl.jaimeOuPasLaSauce);
+// Methode POST permet de stocker une nouvelle donnée
+router.post('/:id/like', auth, stuffCtrl.jaimeOuPasLaSauce); // Route d'acces à la fonction "jaimeOuPasLaSauce" permettant de like/dislike une sauce de la base de donnée
 
-module.exports = router;
+module.exports = router; // Methode exports permet d'exporter les differentes routes créees ci-dessus
